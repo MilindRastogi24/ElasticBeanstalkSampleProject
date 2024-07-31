@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, render_template
 import psycopg2
-
+import json
 import boto3
 from botocore.exceptions import ClientError
 
@@ -21,7 +21,7 @@ def get_secret():
     except ClientError as e:
         raise e
 
-    secret = get_secret_value_response['SecretString']
+    secret = json.loads(get_secret_value_response['SecretString'])
     return secret
 
     # Your code goes here.
