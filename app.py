@@ -30,20 +30,20 @@ secret = get_secret()
 app = Flask(__name__)
 
 def get_db_connection():
-    conn = psycopg2.connect(
-        host="database-1.crau20ig249e.ap-south-1.rds.amazonaws.com",
-        database="postgres",
-        user="postgres",
-        password="password",
-        port='5432'
-    )
     # conn = psycopg2.connect(
-    #     host=secret['host'],
-    #     database=secret['engine'],
-    #     user=secret['username'],
-    #     password=secret['password'],
-    #     port=secret['port']
+    #     host="database-1.crau20ig249e.ap-south-1.rds.amazonaws.com",
+    #     database="postgres",
+    #     user="postgres",
+    #     password="password",
+    #     port='5432'
     # )
+    conn = psycopg2.connect(
+        host=secret['host'],
+        database=secret['engine'],
+        user=secret['username'],
+        password=secret['password'],
+        port=secret['port']
+    )
     return conn
 
 @app.route('/')
